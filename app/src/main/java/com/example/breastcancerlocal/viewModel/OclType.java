@@ -1,4 +1,4 @@
-package com.example.diabeats.viewModel;
+package com.example.breastcancerlocal.viewModel
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
