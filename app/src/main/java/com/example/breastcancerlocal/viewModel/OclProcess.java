@@ -1,4 +1,4 @@
-package com.example.breastcancerlocal.viewModel
+package com.example.breastcancerlocal.viewModel;
 
 import java.util.*;
 import java.util.HashMap;
