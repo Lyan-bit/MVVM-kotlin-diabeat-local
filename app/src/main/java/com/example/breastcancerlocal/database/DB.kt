@@ -67,20 +67,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 			database.query(DiabeatsTABLENAME, DiabeatsCOLS, null, null, null, null, null)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -89,18 +76,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
 	fun createDiabeats(diabeatsvo: DiabeatsVO) {
 		database = writableDatabase
-		val wr = ContentValues(DiabeatsNUMBERCOLS)
-		wr.put(DiabeatsCOLS[DiabeatsCOLID], diabeatsvo.getId())
-		wr.put(DiabeatsCOLS[DiabeatsCOLPREGNANCIES], diabeatsvo.getPregnancies())
-		wr.put(DiabeatsCOLS[DiabeatsCOLGLUCOSE], diabeatsvo.getGlucose())
-		wr.put(DiabeatsCOLS[DiabeatsCOLBLOODPRESSURE], diabeatsvo.getBloodPressure())
-		wr.put(DiabeatsCOLS[DiabeatsCOLSKINTHICKNESS], diabeatsvo.getSkinThickness())
-		wr.put(DiabeatsCOLS[DiabeatsCOLINSULIN], diabeatsvo.getInsulin())
-		wr.put(DiabeatsCOLS[DiabeatsCOLBMI], diabeatsvo.getBmi())
-		wr.put(DiabeatsCOLS[DiabeatsCOLDIABETESPEDIGREEFUNCTION], diabeatsvo.getDiabetesPedigreeFunction())
-		wr.put(DiabeatsCOLS[DiabeatsCOLAGE], diabeatsvo.getAge())
-		wr.put(DiabeatsCOLS[DiabeatsCOLOUTCOME], diabeatsvo.getOutcome())
-		database.insert(DiabeatsTABLENAME, DiabeatsCOLS[1], wr)
+		database.insert(DiabeatsTABLENAME, DiabeatsCOLS[1], putData(diabeatsvo))
 	}
 
 	fun searchByDiabeatsid(value: String): ArrayList<DiabeatsVO> {
@@ -113,20 +89,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -143,20 +106,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -173,20 +123,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -203,20 +140,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -233,20 +157,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -263,20 +174,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -293,20 +191,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -323,20 +208,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -353,20 +225,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -383,20 +242,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		)
 		cursor.moveToFirst()
 		while (!cursor.isAfterLast()) {
-			val diabeatsvo = DiabeatsVO()
-			diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-			diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-			diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-			diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-			diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-			diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-			diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-			diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
-				DiabeatsCOLDIABETESPEDIGREEFUNCTION
-			))
-			diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-			diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
-			res.add(diabeatsvo)
+			res.add(setData(cursor))
 			cursor.moveToNext()
 		}
 		cursor.close()
@@ -406,6 +252,34 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
 	fun editDiabeats(diabeatsvo: DiabeatsVO) {
 		database = writableDatabase
+		val args = arrayOf(diabeatsvo.getId())
+		database.update(DiabeatsTABLENAME, putData(diabeatsvo), "id =?", args)
+	}
+
+	fun deleteDiabeats(value: String) {
+		database = writableDatabase
+		val args = arrayOf(value)
+		database.delete(DiabeatsTABLENAME, "id = ?", args)
+	}
+
+	private fun setData(cursor: Cursor): DiabeatsVO {
+		val diabeatsvo = DiabeatsVO()
+		diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
+		diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
+		diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
+		diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
+		diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
+		diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
+		diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
+		diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
+			DiabeatsCOLDIABETESPEDIGREEFUNCTION
+		))
+		diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
+		diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
+		return diabeatsvo
+	}
+
+	private fun putData(diabeatsvo: DiabeatsVO): ContentValues {
 		val wr = ContentValues(DiabeatsNUMBERCOLS)
 		wr.put(DiabeatsCOLS[DiabeatsCOLID], diabeatsvo.getId())
 		wr.put(DiabeatsCOLS[DiabeatsCOLPREGNANCIES], diabeatsvo.getPregnancies())
@@ -417,14 +291,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		wr.put(DiabeatsCOLS[DiabeatsCOLDIABETESPEDIGREEFUNCTION], diabeatsvo.getDiabetesPedigreeFunction())
 		wr.put(DiabeatsCOLS[DiabeatsCOLAGE], diabeatsvo.getAge())
 		wr.put(DiabeatsCOLS[DiabeatsCOLOUTCOME], diabeatsvo.getOutcome())
-		val args = arrayOf(diabeatsvo.getId())
-		database.update(DiabeatsTABLENAME, wr, "id =?", args)
-	}
-
-	fun deleteDiabeats(value: String) {
-		database = writableDatabase
-		val args = arrayOf(value)
-		database.delete(DiabeatsTABLENAME, "id = ?", args)
+		return wr
 	}
 
 }
