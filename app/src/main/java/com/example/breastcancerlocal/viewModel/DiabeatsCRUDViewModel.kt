@@ -13,13 +13,6 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
     private var currentDiabeats: DiabeatsVO? = null
     private var currentDiabeatss: ArrayList<DiabeatsVO> = ArrayList()
 
-    companion object {
-        private var instance: DiabeatsCRUDViewModel? = null
-        fun getInstance(context: Context): DiabeatsCRUDViewModel {
-            return instance ?: DiabeatsCRUDViewModel(context)
-        }
-    }
-
     fun stringListDiabeats(): ArrayList<String> {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
