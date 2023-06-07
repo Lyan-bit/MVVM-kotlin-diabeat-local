@@ -135,7 +135,7 @@ class DiabeatsBean(c: Context) {
 	  errors.add("age is not a Int")
 	}
 
-	        return errors.size > 0
+	        return errors.isNotEmpty()
 	    }
 	    
 	    fun createDiabeats() {
@@ -145,7 +145,7 @@ class DiabeatsBean(c: Context) {
 
     fun isListDiabeatsError(): Boolean {
 	        errors.clear()
-	        return errors.size > 0
+	        return errors.isNotEmpty()
 	    }
 
 
@@ -154,7 +154,7 @@ class DiabeatsBean(c: Context) {
    	       if (!allDiabeatsIds.contains(id)) {
     	       errors.add("The id is not exist")
     	   }
-           return errors.size > 0
+           return errors.isNotEmpty()
     }
 
     fun errors(): String {
