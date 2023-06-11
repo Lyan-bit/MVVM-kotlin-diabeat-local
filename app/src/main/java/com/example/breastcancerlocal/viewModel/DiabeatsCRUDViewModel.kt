@@ -13,6 +13,13 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
     private var currentDiabeats: DiabeatsVO? = null
     private var currentDiabeatss: ArrayList<DiabeatsVO> = ArrayList()
 
+    companion object {
+        private var instance: DiabeatsCRUDViewModel? = null
+        fun getInstance(context: Context): DiabeatsCRUDViewModel {
+            return instance ?: DiabeatsCRUDViewModel(context)
+        }
+    }
+
     fun stringListDiabeats(): ArrayList<String> {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
@@ -29,16 +36,16 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         } else {
             val vo: DiabeatsVO = res[0]
             val itemx = Diabeats.createByPKDiabeats(value)
-            itemx.id = vo.getId()
-            itemx.pregnancies = vo.getPregnancies()
-            itemx.glucose = vo.getGlucose()
-            itemx.bloodPressure = vo.getBloodPressure()
-            itemx.skinThickness = vo.getSkinThickness()
-            itemx.insulin = vo.getInsulin()
-            itemx.bmi = vo.getBmi()
-            itemx.diabetesPedigreeFunction = vo.getDiabetesPedigreeFunction()
-            itemx.age = vo.getAge()
-            itemx.outcome = vo.getOutcome()
+            itemx.id = vo.id
+            itemx.pregnancies = vo.pregnancies
+            itemx.glucose = vo.glucose
+            itemx.bloodPressure = vo.bloodPressure
+            itemx.skinThickness = vo.skinThickness
+            itemx.insulin = vo.insulin
+            itemx.bmi = vo.bmi
+            itemx.diabetesPedigreeFunction = vo.diabetesPedigreeFunction
+            itemx.age = vo.age
+            itemx.outcome = vo.outcome
             itemx
         }
     }
@@ -51,7 +58,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getId())
+            res.add(currentDiabeatss[Diabeats].id)
         }
         return res
     }
@@ -60,7 +67,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getPregnancies().toString())
+            res.add(currentDiabeatss[Diabeats].pregnancies.toString())
         }
         return res
     }
@@ -69,7 +76,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getGlucose().toString())
+            res.add(currentDiabeatss[Diabeats].glucose.toString())
         }
         return res
     }
@@ -78,7 +85,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getBloodPressure().toString())
+            res.add(currentDiabeatss[Diabeats].bloodPressure.toString())
         }
         return res
     }
@@ -87,7 +94,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getSkinThickness().toString())
+            res.add(currentDiabeatss[Diabeats].skinThickness.toString())
         }
         return res
     }
@@ -96,7 +103,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getInsulin().toString())
+            res.add(currentDiabeatss[Diabeats].insulin.toString())
         }
         return res
     }
@@ -105,7 +112,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getBmi().toString())
+            res.add(currentDiabeatss[Diabeats].bmi.toString())
         }
         return res
     }
@@ -114,7 +121,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getDiabetesPedigreeFunction().toString())
+            res.add(currentDiabeatss[Diabeats].diabetesPedigreeFunction.toString())
         }
         return res
     }
@@ -123,7 +130,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getAge().toString())
+            res.add(currentDiabeatss[Diabeats].age.toString())
         }
         return res
     }
@@ -132,7 +139,7 @@ class DiabeatsCRUDViewModel constructor(context: Context): ViewModel() {
         currentDiabeatss = dbm.listDiabeats()
         val res: ArrayList<String> = ArrayList()
         for (Diabeats in currentDiabeatss.indices) {
-            res.add(currentDiabeatss[Diabeats].getOutcome().toString())
+            res.add(currentDiabeatss[Diabeats].outcome.toString())
         }
         return res
     }
