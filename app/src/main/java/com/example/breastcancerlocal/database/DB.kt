@@ -252,7 +252,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
 	fun editDiabeats(diabeatsvo: DiabeatsVO) {
 		database = writableDatabase
-		val args = arrayOf(diabeatsvo.getId())
+		val args = arrayOf(diabeatsvo.id)
 		database.update(DiabeatsTABLENAME, putData(diabeatsvo), "id =?", args)
 	}
 
@@ -264,33 +264,33 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
 	private fun setData(cursor: Cursor): DiabeatsVO {
 		val diabeatsvo = DiabeatsVO()
-		diabeatsvo.setId(cursor.getString(DiabeatsCOLID))
-		diabeatsvo.setPregnancies(cursor.getInt(DiabeatsCOLPREGNANCIES))
-		diabeatsvo.setGlucose(cursor.getInt(DiabeatsCOLGLUCOSE))
-		diabeatsvo.setBloodPressure(cursor.getInt(DiabeatsCOLBLOODPRESSURE))
-		diabeatsvo.setSkinThickness(cursor.getInt(DiabeatsCOLSKINTHICKNESS))
-		diabeatsvo.setInsulin(cursor.getInt(DiabeatsCOLINSULIN))
-		diabeatsvo.setBmi(cursor.getDouble(DiabeatsCOLBMI))
-		diabeatsvo.setDiabetesPedigreeFunction(cursor.getDouble(
+		diabeatsvo.id = cursor.getString(DiabeatsCOLID)
+		diabeatsvo.pregnancies = cursor.getInt(DiabeatsCOLPREGNANCIES)
+		diabeatsvo.glucose = cursor.getInt(DiabeatsCOLGLUCOSE)
+		diabeatsvo.bloodPressure = cursor.getInt(DiabeatsCOLBLOODPRESSURE)
+		diabeatsvo.skinThickness = cursor.getInt(DiabeatsCOLSKINTHICKNESS)
+		diabeatsvo.insulin = cursor.getInt(DiabeatsCOLINSULIN)
+		diabeatsvo.bmi = cursor.getDouble(DiabeatsCOLBMI)
+		diabeatsvo.diabetesPedigreeFunction = cursor.getDouble(
 			DiabeatsCOLDIABETESPEDIGREEFUNCTION
-		))
-		diabeatsvo.setAge(cursor.getInt(DiabeatsCOLAGE))
-		diabeatsvo.setOutcome(cursor.getString(DiabeatsCOLOUTCOME))
+		)
+		diabeatsvo.age = cursor.getInt(DiabeatsCOLAGE)
+		diabeatsvo.outcome = cursor.getString(DiabeatsCOLOUTCOME)
 		return diabeatsvo
 	}
 
 	private fun putData(diabeatsvo: DiabeatsVO): ContentValues {
 		val wr = ContentValues(DiabeatsNUMBERCOLS)
-		wr.put(DiabeatsCOLS[DiabeatsCOLID], diabeatsvo.getId())
-		wr.put(DiabeatsCOLS[DiabeatsCOLPREGNANCIES], diabeatsvo.getPregnancies())
-		wr.put(DiabeatsCOLS[DiabeatsCOLGLUCOSE], diabeatsvo.getGlucose())
-		wr.put(DiabeatsCOLS[DiabeatsCOLBLOODPRESSURE], diabeatsvo.getBloodPressure())
-		wr.put(DiabeatsCOLS[DiabeatsCOLSKINTHICKNESS], diabeatsvo.getSkinThickness())
-		wr.put(DiabeatsCOLS[DiabeatsCOLINSULIN], diabeatsvo.getInsulin())
-		wr.put(DiabeatsCOLS[DiabeatsCOLBMI], diabeatsvo.getBmi())
-		wr.put(DiabeatsCOLS[DiabeatsCOLDIABETESPEDIGREEFUNCTION], diabeatsvo.getDiabetesPedigreeFunction())
-		wr.put(DiabeatsCOLS[DiabeatsCOLAGE], diabeatsvo.getAge())
-		wr.put(DiabeatsCOLS[DiabeatsCOLOUTCOME], diabeatsvo.getOutcome())
+		wr.put(DiabeatsCOLS[DiabeatsCOLID], diabeatsvo.id)
+		wr.put(DiabeatsCOLS[DiabeatsCOLPREGNANCIES], diabeatsvo.pregnancies)
+		wr.put(DiabeatsCOLS[DiabeatsCOLGLUCOSE], diabeatsvo.glucose)
+		wr.put(DiabeatsCOLS[DiabeatsCOLBLOODPRESSURE], diabeatsvo.bloodPressure)
+		wr.put(DiabeatsCOLS[DiabeatsCOLSKINTHICKNESS], diabeatsvo.skinThickness)
+		wr.put(DiabeatsCOLS[DiabeatsCOLINSULIN], diabeatsvo.insulin)
+		wr.put(DiabeatsCOLS[DiabeatsCOLBMI], diabeatsvo.bmi)
+		wr.put(DiabeatsCOLS[DiabeatsCOLDIABETESPEDIGREEFUNCTION], diabeatsvo.diabetesPedigreeFunction)
+		wr.put(DiabeatsCOLS[DiabeatsCOLAGE], diabeatsvo.age)
+		wr.put(DiabeatsCOLS[DiabeatsCOLOUTCOME], diabeatsvo.outcome)
 		return wr
 	}
 
