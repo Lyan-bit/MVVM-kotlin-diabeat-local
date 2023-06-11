@@ -1,7 +1,7 @@
 package com.example.breastcancerlocal
 
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.os.Bundle 
 import androidx.viewpager.widget.ViewPager
 import com.example.breastcancerlocal.adapter.SectionsPagerAdapter
 import com.example.breastcancerlocal.fragments.ListFragment
