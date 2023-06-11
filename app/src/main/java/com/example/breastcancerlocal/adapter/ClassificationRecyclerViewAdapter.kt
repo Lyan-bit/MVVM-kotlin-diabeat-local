@@ -27,15 +27,15 @@ class ClassificationRecyclerViewAdapter(items: List<DiabeatsVO>, listener: ListF
     // Displays data at a certain position
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.mItem = mValues[position]
-        holder.listClassificationidView.text = " " + mValues[position].getId() + " "
-        holder.listClassificationoneView.text = " " + mValues[position].getPregnancies() + " "
-        holder.listClassificationtwoView.text = " " + mValues[position].getGlucose() + " "
-        holder.listClassificationthreeView.text = " " + mValues[position].getBloodPressure() + " "
-        holder.listClassificationfourView.text = " " + mValues[position].getSkinThickness() + " "
-        holder.listClassificationfiveView.text = " " + mValues[position].getBmi() + " "
-        holder.listClassificationsixView.text = " " + mValues[position].getDiabetesPedigreeFunction() + " "
-        holder.listClassificationsevenView.text = " " + mValues[position].getAge() + " "
-        holder.listClassificationresultView.text = " " + mValues[position].getOutcome() + " "
+        holder.listClassificationidView.text = " " + mValues[position].id + " "
+        holder.listClassificationoneView.text = " " + mValues[position].pregnancies + " "
+        holder.listClassificationtwoView.text = " " + mValues[position].glucose + " "
+        holder.listClassificationthreeView.text = " " + mValues[position].bloodPressure + " "
+        holder.listClassificationfourView.text = " " + mValues[position].skinThickness + " "
+        holder.listClassificationfiveView.text = " " + mValues[position].bmi + " "
+        holder.listClassificationsixView.text = " " + mValues[position].diabetesPedigreeFunction + " "
+        holder.listClassificationsevenView.text = " " + mValues[position].age + " "
+        holder.listClassificationresultView.text = " " + mValues[position].outcome + " "
 
         holder.mView.setOnClickListener {
             mListener?.onListFragmentInteraction(holder.mItem)
